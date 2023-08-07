@@ -50,16 +50,16 @@ Summary_Statistics_Master_Dataset <- Summary_Statistics_Master_Dataset %>%
 RefYear_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
   filter(row_number() %in% c(1:6))
 
-# 4.2 Create Quantity_From_World_Summary_Statistics_Dataset
-Quantity_From_World_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
+# 4.2 Create Q_From_World_Summary_Statistics_Dataset
+Q_From_World_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
   filter(row_number() %in% c(7:12))
 
-# 4.3 Create Quantity_From_Brazil_Summary_Statistics_Dataset
-Quantity_From_Brazil_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
+# 4.3 Create Q_From_Brazil_Summary_Statistics_Dataset
+Q_From_Brazil_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
   filter(row_number() %in% c(13:18))
 
-# 4.4 Create Quantity_From_USA_Summary_Statistics_Dataset
-Quantity_From_USA_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
+# 4.4 Create Q_From_USA_Summary_Statistics_Dataset
+Q_From_USA_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
   filter(row_number() %in% c(19:24))
 
 # 4.5 Create BC_DV_in_C_Summary_Statistics_Dataset
@@ -141,14 +141,14 @@ UC_CDE_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
 # 5.1 Save RefYear_Summary_Statistics_Dataset
 write_rds(RefYear_Summary_Statistics_Dataset, "RefYear_Summary_Statistics_Dataset", compress = "gz")
 
-# 5.2 Save Quantity_From_World_Summary_Statistics_Dataset
-write_rds(Quantity_From_World_Summary_Statistics_Dataset, "Quantity_From_World_Summary_Statistics_Dataset", compress = "gz")
+# 5.2 Save Q_From_World_Summary_Statistics_Dataset
+write_rds(Q_From_World_Summary_Statistics_Dataset, "Quantity_From_World_Summary_Statistics_Dataset", compress = "gz")
 
-# 5.3 Save Quantity_From_Brazil_Summary_Statistics_Dataset
-write_rds(Quantity_From_Brazil_Summary_Statistics_Dataset, "Quantity_From_Brazil_Summary_Statistics_Dataset", compress = "gz")
+# 5.3 Save Q_From_Brazil_Summary_Statistics_Dataset
+write_rds(Q_From_Brazil_Summary_Statistics_Dataset, "Quantity_From_Brazil_Summary_Statistics_Dataset", compress = "gz")
 
-# 5.4 Save Quantity_From_USA_Summary_Statistics_Dataset
-write_rds(Quantity_From_USA_Summary_Statistics_Dataset, "Quantity_From_USA_Summary_Statistics_Dataset", compress = "gz")
+# 5.4 Save Q_From_USA_Summary_Statistics_Dataset
+write_rds(Q_From_USA_Summary_Statistics_Dataset, "Quantity_From_USA_Summary_Statistics_Dataset", compress = "gz")
 
 # 5.5 Save BC_DV_in_C_Summary_Statistics_Dataset
 write_rds(BC_DV_in_C_Summary_Statistics_Dataset, "BC_DV_in_C_Summary_Statistics_Dataset", compress = "gz")
@@ -215,7 +215,7 @@ write_rds(Summary_Statistics_Master_Dataset, "Summary_Statistics_Master_Dataset"
 rm(BC_CDE_Summary_Statistics_Dataset, BC_DE_Summary_Statistics_Dataset, BC_DV_in_B_Summary_Statistics_Dataset, BC_DV_in_C_Summary_Statistics_Dataset, BC_DV_in_Other_Summary_Statistics_Dataset, BC_Total_DV_Summary_Statistics_Dataset)
 rm(BU_CDE_Summary_Statistics_Dataset, BU_DE_Summary_Statistics_Dataset, BU_DV_in_B_Summary_Statistics_Dataset, BU_DV_in_U_Summary_Statistics_Dataset, BU_DV_in_Other_Summary_Statistics_Dataset, BU_Total_DV_Summary_Statistics_Dataset)
 rm(UC_CDE_Summary_Statistics_Dataset, UC_DE_Summary_Statistics_Dataset, UC_DV_in_U_Summary_Statistics_Dataset, UC_DV_in_C_Summary_Statistics_Dataset, UC_DV_in_Other_Summary_Statistics_Dataset, UC_Total_DV_Summary_Statistics_Dataset)
-rm(Quantity_From_Brazil_Summary_Statistics_Dataset,Quantity_From_USA_Summary_Statistics_Dataset, Quantity_From_World_Summary_Statistics_Dataset)
+rm(Q_From_Brazil_Summary_Statistics_Dataset,Q_From_USA_Summary_Statistics_Dataset, Q_From_World_Summary_Statistics_Dataset)
 rm(Summary_Statistics_Master_Dataset, RefYear_Summary_Statistics_Dataset, Master_Dataset)
 gc()
 

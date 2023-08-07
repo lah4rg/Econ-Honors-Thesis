@@ -135,7 +135,7 @@ UC_CDE_Summary_Statistics_Dataset <- Summary_Statistics_Master_Dataset %>%
   filter(row_number() %in% c(144:150))
 
 #-------------------------------------------------------------------------------
-# 5. Save individual summary statistics datasets in RDS format
+# 5. Save individual summary statistics in a permanent RDS format
 #-------------------------------------------------------------------------------
 
 # 5.1 Save RefYear_Summary_Statistics_Dataset
@@ -211,7 +211,7 @@ write_rds(Summary_Statistics_Master_Dataset, "Summary_Statistics_Master_Dataset"
 # 6. Remove extra data
 #-------------------------------------------------------------------------------
 
-# 6.1 Free unused R memory and cleat work space
+# 6.1 Fully clean work space
 rm(BC_CDE_Summary_Statistics_Dataset, BC_DE_Summary_Statistics_Dataset, BC_DV_in_B_Summary_Statistics_Dataset, BC_DV_in_C_Summary_Statistics_Dataset, BC_DV_in_Other_Summary_Statistics_Dataset, BC_Total_DV_Summary_Statistics_Dataset)
 rm(BU_CDE_Summary_Statistics_Dataset, BU_DE_Summary_Statistics_Dataset, BU_DV_in_B_Summary_Statistics_Dataset, BU_DV_in_U_Summary_Statistics_Dataset, BU_DV_in_Other_Summary_Statistics_Dataset, BU_Total_DV_Summary_Statistics_Dataset)
 rm(UC_CDE_Summary_Statistics_Dataset, UC_DE_Summary_Statistics_Dataset, UC_DV_in_U_Summary_Statistics_Dataset, UC_DV_in_C_Summary_Statistics_Dataset, UC_DV_in_Other_Summary_Statistics_Dataset, UC_Total_DV_Summary_Statistics_Dataset)

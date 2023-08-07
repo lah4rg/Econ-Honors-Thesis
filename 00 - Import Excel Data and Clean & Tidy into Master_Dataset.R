@@ -42,15 +42,14 @@ Master_Dataset <- bind_cols(Brazil_China_Master_Dataset, Brazil_USA_Master_Datas
 # 4. Remove repeating and unused variables in Master_Dataset
 #-------------------------------------------------------------------------------
 
-# 4.1 Remove repeated columns
-Master_Dataset <- Master_Dataset[-c(11:14,21:24)]
+# 4.1 Remove NA observations
+Master_Dataset <- na.omit(Master_Dataset)
 
-# 4.2 Remove incomplete rows
-Master_Dataset <- Master_Dataset %>%
-  filter(!row_number() %in% c(18:37))
+# 4.2 Remove repeated columns
+Master_Dataset <- Master_Dataset[-c(11:14, 21:24)]
 
 #-------------------------------------------------------------------------------
-# 5. Remove extra data and save to summary statistics permanent data sets
+# 5. Remove extra data and save Master_Dataset in a permanent RDS format
 #-------------------------------------------------------------------------------
 
 # 5.1 Save to permanent data set

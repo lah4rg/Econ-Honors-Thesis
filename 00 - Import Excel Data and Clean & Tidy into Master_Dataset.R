@@ -1,6 +1,6 @@
 #===============================================================================
-# Program   :  00 - 00 - Import Excel Data and Clean & Tidy into Master_Dataset
-# Date      :  August 6, 2023
+# Program   :  00 - Import Excel Data
+# Date      :  August 7, 2023
 # Project   :  Econ Honors Thesis
 # Author    :  Lucas Hayes
 #===============================================================================
@@ -50,20 +50,13 @@ Master_Dataset <- Master_Dataset %>%
   filter(!row_number() %in% c(18:37))
 
 #-------------------------------------------------------------------------------
-# 5. Save data frame to a permanent data set
+# 5. Remove extra data and save to summary statistics permanent data sets
 #-------------------------------------------------------------------------------
 
-# 5.1 Save to permanent data set with date created for version control
+# 5.1 Save to permanent data set
 write_rds(Master_Dataset, "Master_Dataset", compress = "gz")
 
-#-------------------------------------------------------------------------------
-# 6. Remove extra data and save to summary statistics permanent data sets
-#-------------------------------------------------------------------------------
-
-# 6.1 Save to permanent data set
-write_rds(Master_Dataset, "Master_Dataset", compress = "gz")
-
-# 6.2 Fully clean work space
+# 5.2 Fully clean work space
 rm(Brazil_China_Master_Dataset, Brazil_USA_Master_Dataset, USA_China_Master_Dataset, Master_Dataset)
 gc()
 

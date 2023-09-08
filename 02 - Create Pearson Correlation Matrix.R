@@ -44,10 +44,10 @@ Pearson_Correlation_Matrix <- data.frame(Pearson_Correlation_Matrix)
 # 4.1 Save Pearson_Correlation_Matrix
 write_rds(Pearson_Correlation_Matrix, "Pearson_Correlation_Matrix", compress = "gz")
 
-# 4.2 Save Pearson_Correlation_Matrix
+# 4.2 Save Pearson_Correlation_Matrix in Excel
 write_xlsx(Pearson_Correlation_Matrix,"Pearson_Correlation_Matrix.xlsx")
 
-# 4.3 Fully clean work space
+# 4.3 Fully clean workspace
 rm(Pearson_Correlation_Matrix, Master_Dataset)
 gc()
 

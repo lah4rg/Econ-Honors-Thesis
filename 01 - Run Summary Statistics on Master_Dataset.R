@@ -1,6 +1,6 @@
 #===============================================================================
 # Program   :  01 - Run Summary Statistics on Master_Dataset
-# Date      :  August 7, 2023
+# Date      :  September 8, 2023
 # Project   :  Econ Honors Thesis
 # Author    :  Lucas Hayes
 #===============================================================================
@@ -206,6 +206,79 @@ write_rds(UC_CDE_Summary_Statistics_Dataset, "UC_CDE_Summary_Statistics_Dataset"
 
 # 5.23 Save Summary_Statistics_Master_Dataset
 write_rds(Summary_Statistics_Master_Dataset, "Summary_Statistics_Master_Dataset", compress = "gz")
+
+#-------------------------------------------------------------------------------
+# 6. Save individual summary statistics in a permanent RDS format
+#-------------------------------------------------------------------------------
+
+# 6.1 Save RefYear_Summary_Statistics_Dataset
+write_xlsx(RefYear_Summary_Statistics_Dataset, "RefYear_Summary_Statistics_Dataset")
+
+# 6.2 Save Q_From_World_Summary_Statistics_Dataset
+write_xlsx(Q_From_World_Summary_Statistics_Dataset, "Quantity_From_World_Summary_Statistics_Dataset")
+
+# 6.3 Save Q_From_Brazil_Summary_Statistics_Dataset
+write_xlsx(Q_From_Brazil_Summary_Statistics_Dataset, "Quantity_From_Brazil_Summary_Statistics_Dataset")
+
+# 6.4 Save Q_From_USA_Summary_Statistics_Dataset
+write_xlsx(Q_From_USA_Summary_Statistics_Dataset, "Quantity_From_USA_Summary_Statistics_Dataset")
+
+# 6.5 Save BC_DV_in_C_Summary_Statistics_Dataset
+write_xlsx(BC_DV_in_C_Summary_Statistics_Dataset, "BC_DV_in_C_Summary_Statistics_Dataset")
+
+# 6.6 Save BC_DV_in_B_Summary_Statistics_Dataset
+write_xlsx(BC_DV_in_B_Summary_Statistics_Dataset, "BC_DV_in_B_Summary_Statistics_Dataset")
+
+# 6.7 Save BC_DV_in_Other_Summary_Statistics_Dataset
+write_xlsx(BC_DV_in_Other_Summary_Statistics_Dataset, "BC_DV_in_Other_Summary_Statistics_Dataset")
+
+# 6.8 Save BC_Total_DV_Summary_Statistics_Dataset
+write_xlsx(BC_Total_DV_Summary_Statistics_Dataset, "BC_Total_DV_Summary_Statistics_Dataset")
+
+# 6.9 Save BC_DE_Summary_Statistics_Dataset
+write_xlsx(BC_DE_Summary_Statistics_Dataset, "BC_DE_Summary_Statistics_Dataset")
+
+# 6.10 Save BC_CDE_Summary_Statistics_Dataset
+write_xlsx(BC_CDE_Summary_Statistics_Dataset, "BC_CDE_Summary_Statistics_Dataset")
+
+# 6.11 Save BU_DV_in_U_Summary_Statistics_Dataset
+write_xlsx(BU_DV_in_U_Summary_Statistics_Dataset, "BU_DV_in_U_Summary_Statistics_Dataset")
+
+# 6.12 Save BU_DV_in_B_Summary_Statistics_Dataset
+write_xlsx(BU_DV_in_B_Summary_Statistics_Dataset, "BU_DV_in_B_Summary_Statistics_Dataset")
+
+# 6.13 Save BU_DV_in_Other_Summary_Statistics_Dataset
+write_xlsx(BU_DV_in_Other_Summary_Statistics_Dataset, "BU_DV_in_Other_Summary_Statistics_Dataset")
+
+# 6.14 Save BU_Total_DV_Summary_Statistics_Dataset
+write_xlsx(BU_Total_DV_Summary_Statistics_Dataset, "BU_Total_DV_Summary_Statistics_Dataset")
+
+# 6.15 Save BU_DE_Summary_Statistics_Dataset
+write_xlsx(BU_DE_Summary_Statistics_Dataset, "BU_DE_Summary_Statistics_Dataset")
+
+# 6.16 Save BU_CDE_Summary_Statistics_Dataset
+write_xlsx(BU_CDE_Summary_Statistics_Dataset, "BU_CDE_Summary_Statistics_Dataset")
+
+# 6.17 Save UC_DV_in_U_Summary_Statistics_Dataset
+write_rds(UC_DV_in_U_Summary_Statistics_Dataset, "UC_DV_in_U_Summary_Statistics_Dataset")
+
+# 6.18 Save UC_DV_in_C_Summary_Statistics_Dataset
+write_rds(UC_DV_in_C_Summary_Statistics_Dataset, "UC_DV_in_C_Summary_Statistics_Dataset")
+
+# 6.19 Save UC_DV_in_Other_Summary_Statistics_Dataset
+write_xlsx(UC_DV_in_Other_Summary_Statistics_Dataset, "UC_DV_in_Other_Summary_Statistics_Dataset")
+
+# 6.20 Save UC_Total_DV_Summary_Statistics_Dataset
+write_xlsx(UC_Total_DV_Summary_Statistics_Dataset, "UC_Total_DV_Summary_Statistics_Dataset")
+
+# 6.21 Save UC_DE_Summary_Statistics_Dataset
+write_xlsx(UC_DE_Summary_Statistics_Dataset, "UC_DE_Summary_Statistics_Dataset")
+
+# 6.22 Save UC_CDE_Summary_Statistics_Dataset
+write_xlsx(UC_CDE_Summary_Statistics_Dataset, "UC_CDE_Summary_Statistics_Dataset")
+
+# 6.23 Save Summary_Statistics_Master_Dataset
+write_xlsx(Summary_Statistics_Master_Dataset, "Summary_Statistics_Master_Dataset")
 
 #-------------------------------------------------------------------------------
 # 6. Remove extra data

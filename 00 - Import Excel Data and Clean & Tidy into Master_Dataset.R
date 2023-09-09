@@ -1,6 +1,6 @@
 #===============================================================================
 # Program   :  00 - Import Excel Data
-# Date      :  August 7, 2023
+# Date      :  September 8, 2023
 # Project   :  Econ Honors Thesis
 # Author    :  Lucas Hayes
 #===============================================================================
@@ -10,7 +10,8 @@
 #-------------------------------------------------------------------------------
 
 # 1.1 Load packages
-library(readxl)
+library(openxlsx)
+library(writexl)
 library(dplyr)
 library(readr)
 library(tidyverse)
@@ -23,13 +24,13 @@ setwd("C:/Users/4luca/OneDrive - University of Missouri/Coursework/2023 - 2024/F
 #-------------------------------------------------------------------------------
 
 # 2.1 Load in Brazil_China_Master_Dataset
-Brazil_China_Master_Dataset <- read_excel("Brazil-China Master Dataset.xlsx")
+Brazil_China_Master_Dataset <- read.xlsx("Brazil-China Master Dataset.xlsx")
 
 # 2.2 Load in Brazil_USA_Master_Dataset
-Brazil_USA_Master_Dataset <- read_excel("Brazil-USA Master Dataset.xlsx")
+Brazil_USA_Master_Dataset <- read.xlsx("Brazil-USA Master Dataset.xlsx")
 
 # 2.3 Load in USA_China_Master_Dataset
-USA_China_Master_Dataset <- read_excel("USA-China Master Dataset.xlsx")
+USA_China_Master_Dataset <- read.xlsx("USA-China Master Dataset.xlsx")
 
 #-------------------------------------------------------------------------------
 # 3. Combine Excel files into one Master_Dataset
@@ -49,13 +50,24 @@ Master_Dataset <- na.omit(Master_Dataset)
 Master_Dataset <- Master_Dataset[-c(11:14, 21:24)]
 
 #-------------------------------------------------------------------------------
-# 5. Remove extra data and save Master_Dataset in a permanent RDS format
+# 5. Save Master_Dataset in a permanent RDS format
 #-------------------------------------------------------------------------------
 
 # 5.1 Save to permanent data set
 write_rds(Master_Dataset, "Master_Dataset", compress = "gz")
 
-# 5.2 Fully clean work space
+#-------------------------------------------------------------------------------
+# 6. Save Master_Dataset in a permanent Excel format
+#-------------------------------------------------------------------------------
+
+# 6.1 Save Master_Dataset in Excel format
+write_xlsx(Master_Dataset, "Master_Dataset.xlsx")
+
+#-------------------------------------------------------------------------------
+# 7. Remove extra data
+#-------------------------------------------------------------------------------
+
+# 7.2 Fully clean work space
 rm(Brazil_China_Master_Dataset, Brazil_USA_Master_Dataset, USA_China_Master_Dataset, Master_Dataset)
 gc()
 

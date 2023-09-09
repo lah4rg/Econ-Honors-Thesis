@@ -1,6 +1,6 @@
 #===============================================================================
-# Program   :  01 - Run Summary Statistics on Master_Dataset
-# Date      :  August 7, 2023
+# Program   :  02 - Create Pearson Correlation Matrix
+# Date      :  September 8, 2023
 # Project   :  Econ Honors Thesis
 # Author    :  Lucas Hayes
 #===============================================================================
@@ -44,10 +44,10 @@ Pearson_Correlation_Matrix <- data.frame(Pearson_Correlation_Matrix)
 # 4.1 Save Pearson_Correlation_Matrix
 write_rds(Pearson_Correlation_Matrix, "Pearson_Correlation_Matrix", compress = "gz")
 
-# 4.2 Save Pearson_Correlation_Matrix in Excel
+# 4.2 Save Pearson_Correlation_Matrix
 write_xlsx(Pearson_Correlation_Matrix,"Pearson_Correlation_Matrix.xlsx")
 
-# 4.3 Fully clean workspace
+# 4.3 Fully clean work space
 rm(Pearson_Correlation_Matrix, Master_Dataset)
 gc()
 

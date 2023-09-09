@@ -1,6 +1,6 @@
 #===============================================================================
 # Program   :  02 - Create Pearson Correlation Matrix
-# Date      :  September 8, 2023
+# Date      :  September 9, 2023
 # Project   :  Econ Honors Thesis
 # Author    :  Lucas Hayes
 #===============================================================================
@@ -37,8 +37,7 @@ Pearson_Correlation_Matrix <- round(cor(Master_Dataset),
 Pearson_Correlation_Matrix <- data.frame(Pearson_Correlation_Matrix)
 
 #-------------------------------------------------------------------------------
-# 4. Remove extra data and save Pearson_Correlation_Matrix in a permanent RDS 
-# format and in Excel format
+# 4. Save Pearson_Correlation_Matrix in a permanent RDS and Excel format
 #-------------------------------------------------------------------------------
 
 # 4.1 Save Pearson_Correlation_Matrix
@@ -47,7 +46,11 @@ write_rds(Pearson_Correlation_Matrix, "Pearson_Correlation_Matrix", compress = "
 # 4.2 Save Pearson_Correlation_Matrix
 write_xlsx(Pearson_Correlation_Matrix,"Pearson_Correlation_Matrix.xlsx")
 
-# 4.3 Fully clean work space
+#-------------------------------------------------------------------------------
+# 5. Remove extra data
+#-------------------------------------------------------------------------------
+
+# 5.3 Fully clean work space
 rm(Pearson_Correlation_Matrix, Master_Dataset)
 gc()
 

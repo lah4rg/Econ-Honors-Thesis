@@ -57,7 +57,7 @@ hist(Master_Dataset$UC.Total.DV)
 dev.off()
 
 #-------------------------------------------------------------------------------
-# 4. Check linearity between BC trade flows and BC DV (scatter plot)
+# 4. Check linearity between trade flows and DV (scatter plot)
 #-------------------------------------------------------------------------------
 
 # 4.1 Create Scatter_Plot_BC.Total.DV_Q.from.World...2 and save and jpeg
@@ -125,19 +125,19 @@ lm_UC.Total.DV_Q.from.USA...4 <- lm(Q.from.USA...4 ~ UC.Total.DV, data = Master_
 # 6.1 Export regression output list for BC.Total.DV_Q.from.World...2 relationship
 stargazer(lm_BC.Total.DV_Q.from.World...2, title = "lm_BC.Total.DV_Q.from.World...2", type = "text", out = "lm_BC.Total.DV_Q.from.World...2.text")
 
-# 6.1 Export regression output list for BC.Total.DV_Q.from.Brazil...3 relationship
+# 6.2 Export regression output list for BC.Total.DV_Q.from.Brazil...3 relationship
 stargazer(lm_BC.Total.DV_Q.from.Brazil...3, title = "lm_BC.Total.DV_Q.from.Brazil...3", type = "text", out = "lm_BC.Total.DV_Q.from.Brazil...3.text")
 
-# 6.1 Export regression output list for BC.Total.DV_Q.from.USA...4 relationship
+# 6.3 Export regression output list for BC.Total.DV_Q.from.USA...4 relationship
 stargazer(lm_BC.Total.DV_Q.from.USA...4, title = "lm_BC.Total.DV_Q.from.USA...4", type = "text", out = "lm_BC.Total.DV_Q.from.USA...4.text")
 
-# 6.1 Export regression output list for UC.Total.DV_Q.from.World...2 relationship
+# 6.4 Export regression output list for UC.Total.DV_Q.from.World...2 relationship
 stargazer(lm_UC.Total.DV_Q.from.World...2, title = "lm_UC.Total.DV_Q.from.World...2", type = "text", out = "lm_UC.Total.DV_Q.from.World...2.text")
 
-# 6.1 Export regression output list for UC.Total.DV_Q.from.Brazil...3 relationship
+# 6.5 Export regression output list for UC.Total.DV_Q.from.Brazil...3 relationship
 stargazer(lm_UC.Total.DV_Q.from.Brazil...3, title = "lm_UC.Total.DV_Q.from.Brazil...3", type = "text", out = "lm_UC.Total.DV_Q.from.Brazil...3.text")
 
-# 6.1 Export regression output list for UC.Total.DV_Q.from.USA...4 relationship
+# 6.6 Export regression output list for UC.Total.DV_Q.from.USA...4 relationship
 stargazer(lm_UC.Total.DV_Q.from.USA...4, title = "lm_UC.Total.DV_Q.from.USA...4", type = "text", out = "lm_UC.Total.DV_Q.from.USA...4.text")
 
 #-------------------------------------------------------------------------------

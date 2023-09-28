@@ -30,7 +30,7 @@ Master_Dataset_Lag1 <- readRDS("Master_Dataset_Lag1")
 Master_Dataset_Lag2 <- readRDS("Master_Dataset_Lag2")
 
 #-------------------------------------------------------------------------------
-# 3. Create difference variable
+# 3. Create difference variables
 #-------------------------------------------------------------------------------
 
 # 3.1 Create difference variable subtracting Q.from.USA...4 from Q.from.Brazil...3
@@ -41,94 +41,81 @@ Master_Dataset_Lag1 <- Master_Dataset_Lag1 %>%
 Master_Dataset_Lag2 <- Master_Dataset_Lag2 %>%
   dplyr::mutate(Q.Diff = Q.from.Brazil...3 - Q.from.USA...4)
 
+# 3.2 Create difference variable subtracting UC.Total.DV from BC.Total.DV
+Master_Dataset <- Master_Dataset %>%
+  dplyr::mutate(Total.DV.Diff = BC.Total.DV - UC.Total.DV)
+Master_Dataset_Lag1 <- Master_Dataset_Lag1 %>%
+  dplyr::mutate(Total.DV.Diff_Lag1 = BC.Total.DV_Lag1 - UC.Total.DV_Lag1)
+Master_Dataset_Lag2 <- Master_Dataset_Lag2 %>%
+  dplyr::mutate(Total.DV.Diff_Lag2 = BC.Total.DV_Lag2 - UC.Total.DV_Lag2)
+
 #-------------------------------------------------------------------------------
-# 4. Create line plot of Q.Diff through time
+# 4. Create line plots for difference variables through time
 #-------------------------------------------------------------------------------
 
-# 4.1 Create time variable where observation in 1995 = 1
+# 4.1 Create line plot Q.Diff variable
 png(file = "Q.Diff_RefYear...1_LinePlot.jpg")
 plot(Master_Dataset$RefYear...1, Master_Dataset$Q.Diff, type = "o")
+dev.off()
+
+# 4.2 Create line plot Total.DV.Diff variable
+png(file = "Total.DV.Diff_RefYear...1_LinePlot.jpg")
+plot(Master_Dataset$RefYear...1, Master_Dataset$Total.DV.Diff, type = "o")
+dev.off()
+
+# 4.3 Create line plot Total.DV.Diff_Lag1 variable
+png(file = "Total.DV.Diff_Lag1_RefYear...1_LinePlot.jpg")
+plot(Master_Dataset_Lag1$RefYear...1, Master_Dataset_Lag1$Q.Diff, type = "o")
+dev.off()
+
+# 4.4 Create line plot Total.DV.Diff_Lag2 variable
+png(file = "Total.DV.Diff_Lag2_RefYear...1_LinePlot.jpg")
+plot(Master_Dataset_Lag2$RefYear...1, Master_Dataset_Lag2$Q.Diff, type = "o")
 dev.off()
 
 #-------------------------------------------------------------------------------
 # 5. Run multi-variable regressions for all relationships with and without Time_Period variable
 #-------------------------------------------------------------------------------
 
-# 5.1 Run regression and create list for BC.Total.DV_Lag1_Time_Period_Q.Diff relationship
-lm_BC.Total.DV_Lag1_Time_Period_Q.Diff <- lm(Q.Diff ~ BC.Total.DV_Lag1 + Time_Period, data = Master_Dataset_Lag1)
+# 5.1 Run regression and create list for Total.DV.Diff_Time_Period_Q.Diff relationship
+lm_Total.DV.Diff_Time_Period_Q.Diff <- lm(Q.Diff ~ Total.DV.Diff + Time_Period, data = Master_Dataset)
 
-# 5.2 Run regression and create list for UC.Total.DV_Lag1_Time_Period_Q.Diff relationship
-lm_UC.Total.DV_Lag1_Time_Period_Q.Diff <- lm(Q.Diff ~ UC.Total.DV_Lag1 + Time_Period, data = Master_Dataset_Lag1)
+# 5.2 Run regression and create list for Total.DV.Diff_Lag1_Time_Period_Q.Diff relationship
+lm_Total.DV.Diff_Lag1_Time_Period_Q.Diff <- lm(Q.Diff ~ Total.DV.Diff_Lag1 + Time_Period, data = Master_Dataset_Lag1)
 
-# 5.3 Run regression and create list for BC.Total.DV_Lag2_Time_Period_Q.Diff relationship
-lm_BC.Total.DV_Lag2_Time_Period_Q.Diff <- lm(Q.Diff ~ BC.Total.DV_Lag2 + Time_Period, data = Master_Dataset_Lag2)
+# 5.3 Run regression and create list for Total.DV.Diff_Lag2_Time_Period_Q.Diff relationship
+lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff <- lm(Q.Diff ~ Total.DV.Diff_Lag2 + Time_Period, data = Master_Dataset_Lag2)
 
-# 5.4 Run regression and create list for UC.Total.DV_Lag2_Time_Period_Q.Diff relationship
-lm_UC.Total.DV_Lag2_Time_Period_Q.Diff <- lm(Q.Diff ~ UC.Total.DV_Lag2 + Time_Period, data = Master_Dataset_Lag2)
+# 5.4 Run regression and create list for Total.DV.Diff_Q.Diff relationship
+lm_Total.DV.Diff_Q.Diff <- lm(Q.Diff ~ Total.DV.Diff, data = Master_Dataset)
 
-# 5.5 Run regression and create list for BC.Total.DV_Time_Period_Q.Diff relationship
-lm_BC.Total.DV_Time_Period_Q.Diff <- lm(Q.Diff ~ BC.Total.DV + Time_Period, data = Master_Dataset)
+# 5.5 Run regression and create list for Total.DV.Diff_Lag1_Q.Diff relationship
+lm_Total.DV.Diff_Lag1_Q.Diff <- lm(Q.Diff ~ Total.DV.Diff_Lag1, data = Master_Dataset_Lag1)
 
-# 5.6 Run regression and create list for UC.Total.DV_Time_Period_Q.Diff relationship
-lm_UC.Total.DV_Time_Period_Q.Diff <- lm(Q.Diff ~ UC.Total.DV + Time_Period, data = Master_Dataset)
-
-# 5.7 Run regression and create list for BC.Total.DV_Lag1_Q.Diff relationship
-lm_BC.Total.DV_Lag1_Q.Diff <- lm(Q.Diff ~ BC.Total.DV_Lag1, data = Master_Dataset_Lag1)
-
-# 5.8 Run regression and create list for UC.Total.DV_Lag1_Q.Diff relationship
-lm_UC.Total.DV_Lag1_Q.Diff <- lm(Q.Diff ~ UC.Total.DV_Lag1, data = Master_Dataset_Lag1)
-
-# 5.9 Run regression and create list for BC.Total.DV_Lag2_Q.Diff relationship
-lm_BC.Total.DV_Lag2_Q.Diff <- lm(Q.Diff ~ BC.Total.DV_Lag2, data = Master_Dataset_Lag2)
-
-# 5.10 Run regression and create list for UC.Total.DV_Lag2_Q.Diff relationship
-lm_UC.Total.DV_Lag2_Q.Diff <- lm(Q.Diff ~ UC.Total.DV_Lag2, data = Master_Dataset_Lag2)
-
-# 5.11 Run regression and create list for BC.Total.DV_Q.Diff relationship
-lm_BC.Total.DV_Q.Diff <- lm(Q.Diff ~ BC.Total.DV, data = Master_Dataset)
-
-# 5.12 Run regression and create list for UC.Total.DV_Q.Diff relationship
-lm_UC.Total.DV_Q.Diff <- lm(Q.Diff ~ UC.Total.DV, data = Master_Dataset)
+# 5.6 Run regression and create list for Total.DV.Diff_Lag2_Q.Diff relationship
+lm_Total.DV.Diff_Lag2_Q.Diff <- lm(Q.Diff ~ Total.DV.Diff_Lag2, data = Master_Dataset_Lag2)
 
 #-------------------------------------------------------------------------------
 # 6. Export regression outputs into text files
 #-------------------------------------------------------------------------------
 
-# 6.1 Export regression output list for lm_BC.Total.DV_Lag1_Time_Period_Q.Diff relationship
-stargazer(lm_BC.Total.DV_Lag1_Time_Period_Q.Diff, title = "lm_BC.Total.DV_Lag1_Time_Period_Q.Diff", type = "text", out = "lm_BC.Total.DV_Lag1_Time_Period_Q.Diff.text")
+# 6.1 Export regression output list for lm_Total.DV.Diff_Time_Period_Q.Diff relationship
+stargazer(lm_Total.DV.Diff_Time_Period_Q.Diff, title = "lm_Total.DV.Diff_Time_Period_Q.Diff", type = "text", out = "lm_Total.DV.Diff_Time_Period_Q.Diff.text")
 
-# 6.2 Export regression output list for lm_UC.Total.DV_Lag1_Time_Period_Q.Diff relationship
-stargazer(lm_UC.Total.DV_Lag1_Time_Period_Q.Diff, title = "lm_UC.Total.DV_Lag1_Time_Period_Q.Diff", type = "text", out = "lm_UC.Total.DV_Lag1_Time_Period_Q.Diff.text")
+# 6.2 Export regression output list for lm_Total.DV.Diff_Time_Period_Lag1_Q.Diff relationship
+stargazer(lm_Total.DV.Diff_Lag1_Time_Period_Q.Diff, title = "lm_Total.DV.Diff_Lag1_Time_Period_Q.Diff", type = "text", out = "lm_Total.DV.Diff_Lag1_Time_Period_Q.Diff.text")
 
-# 6.3 Export regression output list for lm_BC.Total.DV_Lag2_Time_Period_Q.Diff relationship
-stargazer(lm_BC.Total.DV_Lag2_Time_Period_Q.Diff, title = "lm_BC.Total.DV_Lag2_Time_Period_Q.Diff", type = "text", out = "lm_BC.Total.DV_Lag2_Time_Period_Q.Diff.text")
+# 6.3 Export regression output list for lm_Total.DV.Diff_Time_Period_Lag2_Q.Diff relationship
+stargazer(lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff, title = "lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff", type = "text", out = "lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff.text")
 
-# 6.4 Export regression output list for lm_UC.Total.DV_Lag2_Time_Period_Q.Diff relationship
-stargazer(lm_UC.Total.DV_Lag2_Time_Period_Q.Diff, title = "lm_UC.Total.DV_Lag2_Time_Period_Q.Diff", type = "text", out = "lm_UC.Total.DV_Lag2_Time_Period_Q.Diff.text")
+# 6.4 Export regression output list for lm_Total.DV.Diff_Q.Diff relationship
+stargazer(lm_Total.DV.Diff_Q.Diff, title = "lm_Total.DV.Diff_Q.Diff", type = "text", out = "lm_Total.DV.Diff_Q.Diff.text")
 
-# 6.5 Export regression output list for lm_BC.Total.DV_Time_Period_Q.Diff relationship
-stargazer(lm_BC.Total.DV_Time_Period_Q.Diff, title = "lm_BC.Total.DV_Time_Period_Q.Diff", type = "text", out = "lm_BC.Total.DV_Time_Period_Q.Diff.text")
+# 6.5 Export regression output list for lm_Total.DV.Diff_Lag1_Q.Diff relationship
+stargazer(lm_Total.DV.Diff_Lag1_Q.Diff, title = "lm_Total.DV.Diff_Lag1_Q.Diff", type = "text", out = "lm_Total.DV.Diff_Lag1_Q.Diff.text")
 
-# 6.6 Export regression output list for lm_UC.Total.DV_Time_Period_Q.Diff relationship
-stargazer(lm_UC.Total.DV_Time_Period_Q.Diff, title = "lm_UC.Total.DV_Time_Period_Q.Diff", type = "text", out = "lm_UC.Total.DV_Time_Period_Q.Diff.text")
-
-# 6.7 Export regression output list for lm_BC.Total.DV_Lag1_Q.Diff relationship
-stargazer(lm_BC.Total.DV_Lag1_Q.Diff, title = "lm_BC.Total.DV_Lag1_Q.Diff", type = "text", out = "lm_BC.Total.DV_Lag1_Q.Diff.text")
-
-# 6.8 Export regression output list for lm_UC.Total.DV_Lag1_Q.Diff relationship
-stargazer(lm_UC.Total.DV_Lag1_Q.Diff, title = "lm_UC.Total.DV_Lag1_Q.Diff", type = "text", out = "lm_UC.Total.DV_Lag1_Q.Diff.text")
-
-# 6.9 Export regression output list for lm_BC.Total.DV_Lag2_Q.Diff relationship
-stargazer(lm_BC.Total.DV_Lag2_Q.Diff, title = "lm_BC.Total.DV_Lag2_Q.Diff", type = "text", out = "lm_BC.Total.DV_Lag2_Q.Diff.text")
-
-# 6.10 Export regression output list for lm_UC.Total.DV_Lag2_Q.Diff relationship
-stargazer(lm_UC.Total.DV_Lag2_Q.Diff, title = "lm_UC.Total.DV_Lag2_Q.Diff", type = "text", out = "lm_UC.Total.DV_Lag2_Q.Diff.text")
-
-# 6.11 Export regression output list for lm_BC.Total.DV_Q.Diff relationship
-stargazer(lm_BC.Total.DV_Q.Diff, title = "lm_BC.Total.DV_Q.Diff", type = "text", out = "lm_BC.Total.DV_Q.Diff.text")
-
-# 6.12 Export regression output list for lm_UC.Total.DV_Q.Diff relationship
-stargazer(lm_UC.Total.DV_Q.Diff, title = "lm_UC.Total.DV_Q.Diff", type = "text", out = "lm_UC.Total.DV_Q.Diff.text")
+# 6.6 Export regression output list for lm_Total.DV.Diff_Lag2_Q.Diff relationship
+stargazer(lm_Total.DV.Diff_Lag2_Q.Diff, title = "lm_Total.DV.Diff_Lag2_Q.Diff", type = "text", out = "lm_Total.DV.Diff_Lag2_Q.Diff.text")
 
 #-------------------------------------------------------------------------------
 # 7. Save Master_Dataset, Master_Dataset_Lag1, Master_Dataset_Lag2 in a permanent RDS and Excel format
@@ -158,7 +145,7 @@ write_xlsx(Master_Dataset_Lag2,"Master_Dataset_Lag2.xlsx")
 
 # 8.1 Fully clean work space
 rm(Master_Dataset, Master_Dataset_Lag1, Master_Dataset_Lag2)
-rm(lm_BC.Total.DV_Lag1_Time_Period_Q.Diff, lm_BC.Total.DV_Lag2_Time_Period_Q.Diff, lm_BC.Total.DV_Time_Period_Q.Diff, lm_UC.Total.DV_Lag1_Time_Period_Q.Diff, lm_UC.Total.DV_Lag2_Time_Period_Q.Diff, lm_UC.Total.DV_Time_Period_Q.Diff, lm_BC.Total.DV_Q.Diff, lm_UC.Total.DV_Q.Diff, lm_UC.Total.DV_Lag2_Q.Diff, lm_BC.Total.DV_Lag2_Q.Diff, lm_UC.Total.DV_Lag1_Q.Diff, lm_BC.Total.DV_Lag1_Q.Diff)
+rm(lm_Total.DV.Diff_Lag1_Time_Period_Q.Diff, lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff,lm_Total.DV.Diff_Time_Period_Q.Diff, lm_Total.DV.Diff_Lag1_Q.Diff, lm_Total.DV.Diff_Lag2_Q.Diff, lm_Total.DV.Diff_Q.Diff)
 gc()
 
 ### END PROGRAM ###

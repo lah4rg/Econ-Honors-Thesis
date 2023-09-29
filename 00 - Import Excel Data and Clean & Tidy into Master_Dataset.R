@@ -67,7 +67,7 @@ write_xlsx(Master_Dataset, "Master_Dataset.xlsx")
 # 7. Remove extra data
 #-------------------------------------------------------------------------------
 
-# 7.2 Fully clean work space
+# 7.1 Fully clean work space
 rm(Brazil_China_Master_Dataset, Brazil_USA_Master_Dataset, USA_China_Master_Dataset, Master_Dataset)
 gc()
 

@@ -14,7 +14,6 @@ library(tidyverse)
 library(dplyr)
 library(openxlsx)
 library(writexl)
-library(ggplot2)
 library(stargazer)
 
 # 1.2 Set working directory

@@ -16,6 +16,7 @@ library(openxlsx)
 library(writexl)
 library(ggplot2)
 library(stargazer)
+library(yarrr)
 
 # 1.2 Set working directory
 setwd("C:/Users/4luca/OneDrive - University of Missouri/Coursework/2023 - 2024/Fall 2023/ECONOM 4995H/Data/Econ Honors Thesis")
@@ -140,12 +141,30 @@ write_rds(Master_Dataset_Lag2, "Master_Dataset_Lag2", compress = "gz")
 write_xlsx(Master_Dataset_Lag2,"Master_Dataset_Lag2.xlsx")
 
 #-------------------------------------------------------------------------------
-# 8. Remove extra data
+# 8. Create and export regression summary
 #-------------------------------------------------------------------------------
 
-# 8.1 Fully clean work space
+# 8.1 Create regression summary output list for lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff relationship
+summary_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff <- summary(lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff)
+
+# 8.2 Export regression output list for summary_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff
+View(summary_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff)
+sink("summary_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff.txt")
+print(summary_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff)
+
+# 8.3 Create regression confidence interval for lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff
+ci_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff <- confint(lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff, level=0.95)
+sink("ci_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff.txt")
+print(ci_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff)
+
+#-------------------------------------------------------------------------------
+# 9. Remove extra data
+#-------------------------------------------------------------------------------
+
+# 9.1 Fully clean work space
 rm(Master_Dataset, Master_Dataset_Lag1, Master_Dataset_Lag2)
 rm(lm_Total.DV.Diff_Lag1_Time_Period_Q.Diff, lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff,lm_Total.DV.Diff_Time_Period_Q.Diff, lm_Total.DV.Diff_Lag1_Q.Diff, lm_Total.DV.Diff_Lag2_Q.Diff, lm_Total.DV.Diff_Q.Diff)
+rm(summary_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff, ci_lm_Total.DV.Diff_Lag2_Time_Period_Q.Diff)
 gc()
 
 ### END PROGRAM ###
